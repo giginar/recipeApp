@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.cardview.widget.CardView
         xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="8dp"
-        android:cardBackgroundColor="@color/white"
-        android:cardElevation="8dp">
+        app:cardBackgroundColor="@color/white"
+        android:id="@+id/random_list_container"
+        app:cardElevation="8dp">
 
     <LinearLayout
             android:layout_width="match_parent"
@@ -17,7 +20,7 @@
                 android:singleLine="true"
                 android:ellipsize="marquee"
                 android:marqueeRepeatLimit="marquee_forever"
-                android:scrollGorizontally="true"
+                android:scrollHorizontally="true"
                 android:textStyle="bold"
                 android:textColor="@color/orange"
                 android:textSize="22dp"
@@ -47,7 +50,7 @@
                 <TextView
                         android:src="@+id/textView_servings"
                         android:textSize="14sp"
-                        android:padding="2 persons"
+                        android:padding="8dp"
                         android:text="2 persons"
                         android:textColor="@color/black"
                         android:layout_width="wrap_content"
@@ -66,7 +69,7 @@
                 <TextView
                         android:src="@+id/textView_likes"
                         android:textSize="14sp"
-                        android:padding="2 persons"
+                        android:padding="8dp"
                         android:text="2 persons"
                         android:textColor="@color/black"
                         android:layout_width="wrap_content"
@@ -85,7 +88,7 @@
                 <TextView
                         android:src="@+id/textView_time"
                         android:textSize="14sp"
-                        android:padding="2 persons"
+                        android:padding="8dp"
                         android:text="2 persons"
                         android:textColor="@color/black"
                         android:layout_width="wrap_content"
