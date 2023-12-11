@@ -57,7 +57,7 @@ class RandomRecipeViewHolder extends RecyclerView.ViewHolder {
         super(itemView);
         random_list_container = itemView.findViewById(R.id.random_list_container);
         textView_title = itemView.findViewById(R.id.textView_title);
-        textView_servings = itemView.findViewById(R.id.random_list_container);
+        textView_servings = itemView.findViewById(R.id.textView_servings);
         textView_likes = itemView.findViewById(R.id.textView_likes);
         textView_time = itemView.findViewById(R.id.textView_time);
         imageView_food = itemView.findViewById(R.id.imageView_food);
