@@ -35,7 +35,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <TextView
-                android:id="@+id/texView_meal_soruce"
+                android:id="@+id/texView_meal_source"
                 android:text="Source"
                 android:gravity="center"
                 android:textStyle="italic"
