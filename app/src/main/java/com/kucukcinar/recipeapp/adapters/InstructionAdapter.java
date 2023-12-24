@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.kucukcinar.recipeapp.R;
@@ -33,7 +34,9 @@ public class InstructionAdapter extends RecyclerView.Adapter<InstructionsViewHol
     public void onBindViewHolder(@NonNull InstructionsViewHolder holder, int position) {
         holder.textView_instructions_name.setText(list.get(position).name);
         holder.recycler_instruction_steps.setHasFixedSize(true);
-
+        holder.recycler_instruction_steps.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
+        InstructionStepAdapter stepAdapter = new InstructionStepAdapter(context, list.get(position).steps);
+        holder.recycler_instruction_steps.setAdapter(stepAdapter);
     }
 
     @Override
