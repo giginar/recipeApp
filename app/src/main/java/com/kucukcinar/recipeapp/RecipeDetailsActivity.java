@@ -12,10 +12,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.kucukcinar.recipeapp.adapters.IngredientsAdapter;
+import com.kucukcinar.recipeapp.adapters.InstructionAdapter;
 import com.kucukcinar.recipeapp.adapters.SimilarRecipeAdapter;
+import com.kucukcinar.recipeapp.listeners.InstructionsListener;
 import com.kucukcinar.recipeapp.listeners.RecipeClickListener;
 import com.kucukcinar.recipeapp.listeners.RecipeDetailsListener;
 import com.kucukcinar.recipeapp.listeners.SimilarRecipesListener;
+import com.kucukcinar.recipeapp.models.InstructionsResponse;
 import com.kucukcinar.recipeapp.models.RecipeDetailsResponse;
 import com.kucukcinar.recipeapp.models.SimilarRecipeResponse;
 import com.squareup.picasso.Picasso;
@@ -31,6 +34,7 @@ public class RecipeDetailsActivity extends AppCompatActivity {
     ProgressDialog dialog;
     IngredientsAdapter ingredientsAdapter;
     SimilarRecipeAdapter similarRecipeAdapter;
+    InstructionAdapter instructionAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +46,7 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         manager = new RequestManager(this);
         manager.getRecipeDetails(recipeDetailsListener, id);
         manager.getSimilarRecipes(similarRecipesListener,id);
+        manager.getInstructions(instructionsListener, id);
         dialog = new ProgressDialog(this);
         dialog.setTitle("Loading Details...");
         dialog.show();
@@ -97,6 +102,21 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         @Override
         public void onRecipeClicked(String id) {
             startActivity(new Intent(RecipeDetailsActivity.this, RecipeDetailsActivity.class).putExtra("id", id));
+        }
+    };
+
+    private final InstructionsListener instructionsListener = new InstructionsListener() {
+        @Override
+        public void didFetch(List<InstructionsResponse> response, String message) {
+            recycler_meal_instructions.setHasFixedSize(true);
+            recycler_meal_instructions.setLayoutManager(new LinearLayoutManager(RecipeDetailsActivity.this, LinearLayoutManager.VERTICAL, false));
+            instructionAdapter = new InstructionAdapter(RecipeDetailsActivity.this, response);
+            recycler_meal_instructions.setAdapter(ingredientsAdapter);
+        }
+
+        @Override
+        public void didError(String message) {
+
         }
     };
 }
